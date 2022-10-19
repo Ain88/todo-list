@@ -1,16 +1,11 @@
 import React from 'react';
-import { atom, selector, useRecoilValue } from 'recoil';
-
-const todoIdStatte = atom({
-  key: 'todoIdState',
-  default: 1
-});
+import { RecoilRoot } from 'recoil';
 
 function App() {
   return (
-    <div>
-      Hello Recoil !
-    </div>
+    <RecoilRoot>
+      Hello Recoil
+    </RecoilRoot>
   );
 }
 
