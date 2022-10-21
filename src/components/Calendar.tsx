@@ -93,16 +93,16 @@ const Base = styled.div`
   }
 `;
 
-const DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']; // 요일
+const DAYS = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
 const MONTHS = ["January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
-]; // 달
+];
 
 const Calendar: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date()); // 선택한 날짜
+  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
 
-  const { year, month, firstDay, lastDay } = useMemo(() => { // 선택한 날을 기준으로 첫째 날, 마지막 날, 년, 월 계
+  const { year, month, firstDay, lastDay } = useMemo(() => {
     const year = selectedDate.getFullYear();
     const month = selectedDate.getMonth();
 
@@ -114,13 +114,13 @@ const Calendar: React.FC = () => {
     })
   }, [selectedDate]);
 
-  const selectDate = (date: Date) => { // 날짜를 선택한다. 
+  const selectDate = (date: Date) => {
     setSelectedDate(date);
   }
 
-  const pad = () => [...Array(firstDay.getDay()).keys()].map((p: number) => <TableData key={`pad_${p}`} />); // 해당 월의 첫째 날 전 pad
+  const pad = () => [...Array(firstDay.getDay()).keys()].map((p: number) => <TableData key={`pad_${p}`} />);
 
-  const range = () => [...Array(lastDay.getDate()).keys()].map((d: number) => { // 1일 부터 마지막 날까지 날짜 표기
+  const range = () => [...Array(lastDay.getDate()).keys()].map((d: number) => {
     const thisDay = new Date(year, month, d + 1);
     const today = new Date();
 
@@ -134,7 +134,7 @@ const Calendar: React.FC = () => {
     )
   });
 
-  const render = () => { // table data 를 일주일 단위로 줄바꿈한다.
+  const render = () => {
     const items = [...pad(), ...range()];
 
     const weeks = Math.ceil(items.length / 7);
